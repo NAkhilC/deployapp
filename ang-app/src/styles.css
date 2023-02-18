@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+    color: rgb(82, 197, 199);
+}
+body {
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+mat-grid-tile {
+    background: #60d9f7;
+}
+.imagediv {
+    height: 50%;
+    width: 100%;
+    background-color: red;
+}
+
+.container {
+    max-width: 70% !important;
+}
+.example-panel-bg.mat-mdc-select-panel {
+    background: #c5c5c5;
+}
+
+.example-panel-green.mat-mdc-select-panel {
+    background: rgba(0, 255, 0, 0.5);
+}
+
+.example-panel-blue.mat-mdc-select-panel {
+    background: rgba(245, 245, 245, 0.5);
+}

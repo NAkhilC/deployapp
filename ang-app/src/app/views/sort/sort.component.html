@@ -1,0 +1,69 @@
+<div style="width: 100%; height: 100px">
+    <div class="d-flex justify-content-center mb-3">
+        <div class="p-2 w-25">
+            <h6 style="text-align: center">Price Range</h6>
+            <div class="d-flex justify-content-center mb-3">
+                <div class="me-2">
+                    <mat-form-field>
+                        <mat-label panelClass="example-panel">From</mat-label>
+                        <mat-select panelClass="example-panel">
+                            <mat-option *ngFor="let value of values" [value]="value.value">
+                                {{ value.value }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>To</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let value of values" [value]="value.value">
+                                {{ value.value }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="p-2 w-25">
+            <h6 style="text-align: center">Beds and Bath</h6>
+            <div class="d-flex justify-content-center mb-3">
+                <div class="me-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Beds</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let value of bedsAndBath" [value]="value.value">
+                                {{ value.value }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Bath</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let value of bedsAndBath" [value]="value.value">
+                                {{ value.value }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="p-2">
+            <h6 style="text-align: center">Sory By</h6>
+            <div class="d-flex justify-content-center mb-3">
+                <div class="me-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Sort By</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let value of sortBy" [value]="value.value">
+                                {{ value.value }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
