@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store'
 import { STRING_TYPE } from '@angular/compiler'
 import { UpdateAppUser } from 'src/app/store/store.action'
 import { getAppUser } from 'src/app/store/store.Selector'
+import { environment } from 'src/environments/environment'
 //import { UpdateAppUser } from 'src/app/store/store.action';
 
 @Injectable({
@@ -17,6 +18,7 @@ export class ReferenceService {
     loggedIn$ = new BehaviorSubject<boolean>(false)
     private user = new Subject()
     token!: string
+    baseUrl = environment.baseUrl
 
     getService() {
         // const requestOptions = {
@@ -46,7 +48,7 @@ export class ReferenceService {
 
     test() {
         const requestOptions = {}
-        this.httpClient.get('http://localhost:3000/test', {}).subscribe((val: any) => {
+        this.httpClient.get(`${this.baseUrl}/test`, {}).subscribe((val: any) => {
             if (val.user) {
                 this.store.dispatch(
                     UpdateAppUser({
@@ -61,7 +63,7 @@ export class ReferenceService {
     loginService(values: any) {
         this.httpClient
             .post(
-                'http://localhost:3000/login',
+                `${this.baseUrl}/login`,
                 { email: values.userid, password: values.password },
                 {
                     withCredentials: true, // <=========== important!
