@@ -4,6 +4,7 @@ var cors = require('cors')
 const dotenv = require('dotenv').config()
 const port = process.env.PORT
 const cookieParser = require('cookie-parser')
+const path = require('path')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 const uuid = require('node-uuid')
@@ -24,6 +25,8 @@ const users = [
 ]
 
 app.use(bodyParser.json())
+app.use(express.static('ang-app')) //set the static path
+app.set('view engine', 'pug')
 app.use(
     session({
         secret: process.env.SESSIONSECRET,
@@ -54,7 +57,12 @@ app.get('/', (req, res) => {
     }
 })
 
+app.get('/', (req, res) => {
+    res.sendFile('index.html', { root: __dirname })
+})
+
 app.post('/login', (req, res) => {
+    console.log(req.body)
     req.session.user = req.body?.email
     req.session.sessionId = uuid.v1()
     let user = users.filter((obj) => Object.keys(obj).some((userid) => obj[userid].includes(req.body.email)))
@@ -66,9 +74,9 @@ app.post('/login', (req, res) => {
         }
         const token = jwt.sign(data, jwtSecretKey, { expiresIn: '10s' })
         req.session.token = token
-        return res.send({ status: 200, user: req.body.email, token: token })
+        return res.json({ status: 200, user: req.body.email, token: token })
     }
-    return res.send({ status: 400 })
+    return res.json({ status: 400 })
 })
 
 app.get('/test', (req, res) => {
