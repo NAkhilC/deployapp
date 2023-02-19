@@ -40,7 +40,7 @@ pipeline {
             openshift.withCluster() {
                 openshift.withProject() {
                    sh '''
-                  oc create -f https://raw.githubusercontent.com/NAkhilC/testjenkins/master/jj.yaml
+                  oc create -f https://raw.githubusercontent.com/NAkhilC/deployapp/main/openshift.yaml
                   '''
                 }
             }
