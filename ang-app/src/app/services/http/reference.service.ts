@@ -48,14 +48,16 @@ export class ReferenceService {
 
     test() {
         const requestOptions = {}
+        console.log('test')
         this.httpClient.get(`${this.baseUrl}/test`, {}).subscribe((val: any) => {
+            console.log('test')
             if (val.user) {
                 this.store.dispatch(
                     UpdateAppUser({
                         appUser: { status: val.status, userName: val.user },
                     })
                 )
-                this.router.navigate(['/home'])
+                this.router.navigate(['home'])
             }
         })
     }
@@ -77,7 +79,7 @@ export class ReferenceService {
                         })
                     )
                     this.token = val.token
-                    this.router.navigate(['/home'])
+                    this.router.navigate(['home'])
                     return val
                 }
             })

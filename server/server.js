@@ -13,6 +13,7 @@ app.use(cookieParser(process.env.SESSIONSECRET))
 app.use(
     cors({
         origin: ['http://localhost:4200'],
+        origin: ['http://localhost:3000'],
         credentials: true,
     })
 )
@@ -40,27 +41,6 @@ app.use(
     })
 )
 
-app.get('/', (req, res) => {
-    if (!req.headers['authorization']) {
-        return res.status(401).send('Unauthorized request')
-    }
-    const token = req.headers['authorization']
-    if (!token) {
-        return res.status(401).send('Access denied. No token provided.')
-    }
-    try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY)
-        console.log(decoded)
-        return res.send({ status: 200, user: req.session.user, token: token })
-    } catch (err) {
-        res.status(400).send('Invalid token.')
-    }
-})
-
-app.get('/', (req, res) => {
-    res.sendFile('index.html', { root: __dirname })
-})
-
 app.post('/login', (req, res) => {
     console.log(req.body)
     req.session.user = req.body?.email
@@ -80,10 +60,13 @@ app.post('/login', (req, res) => {
 })
 
 app.get('/test', (req, res) => {
-    console.log(req.session['cookie'])
     if (req && req.session && req.session['cookie']) {
         return res.send({ status: 200, user: req.session.user, token: req.session.token })
     }
+})
+
+app.get('*', (req, res) => {
+    res.sendFile('ang-app/index.html', { root: __dirname })
 })
 
 app.listen(port, () => {

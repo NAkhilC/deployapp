@@ -1,22 +1,18 @@
-<div class="container">
+<div class="container-class justify-content-center">
     <h3 style="text-align: center" class="p-3">Look for Perfect one</h3>
     <app-sort></app-sort>
-    <div style="float: left" *ngFor="let house of data; let i = index" class="p-4">
+    <div style="float: left" *ngFor="let house of data; let i = index" class="card-class">
         <div
-            class="card d-flex flex-row"
-            style="
-                width: 600px;
-                height: 250px;
-                box-shadow: 0 4px 8px 0 rgb(188, 221, 222), 0 6px 20px 0 rgb(179, 213, 213);
-            "
+            class="card card-wh card-flex"
+            style="box-shadow: 0 4px 8px 0 rgb(188, 221, 222), 0 6px 20px 0 rgb(179, 213, 213)"
         >
-            <div style="width: 50%">
+            <div class="img-display">
                 <img
                     src="assets/images/{{ house.images[0] }}.jpg"
                     style="object-fit: cover; object-position: top; display: block; height: 100%; width: 100%"
                 />
             </div>
-            <div style="width: 50%; height: 100%" class="p-3">
+            <div class="p-3">
                 <h3>${{ house.price }}</h3>
                 <h6>{{ house.address }}</h6>
                 <a routerLink="/view/{{ house.id }}">View</a>
