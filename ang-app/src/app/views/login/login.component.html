@@ -1,42 +1,30 @@
 <div class="login" [formGroup]="loginForm">
-  <div class="picture"></div>
+    <div class="picture"></div>
 
-  <div class="form-group loginuser w-25">
-    <label for="exampleInputEmail1">Email address</label>
-    <input
-      type="email"
-      class="form-control"
-      id="exampleInputEmail1"
-      aria-describedby="emailHelp"
-      placeholder="Enter email"
-      formControlName="userid"
-    />
-  </div>
-  <br />
-  <div class="form-group loginpassword w-25">
-    <label for="exampleInputPassword1">Password</label>
-    <input
-      type="password"
-      class="form-control"
-      id="exampleInputPassword1"
-      placeholder="Password"
-      formControlName="password"
-    />
-  </div>
-  <div>
-    <button
-      type="submit"
-      class="btn btn-primary submitbutton"
-      (click)="submit()"
-    >
-      Submit
-    </button>
-    <button
-      type="submit"
-      class="btn btn-primary submitbutton"
-      (click)="another()"
-    >
-      Test
-    </button>
-  </div>
+    <div class="form-group loginuser">
+        <label for="exampleInputEmail1">Email address</label>
+        <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+            formControlName="userid"
+        />
+    </div>
+    <br />
+    <div class="form-group loginpassword">
+        <label for="exampleInputPassword1">Password</label>
+        <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+            formControlName="password"
+        />
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary submitbutton" (click)="submit()">Submit</button>
+        <button type="submit" class="btn btn-primary submitbutton" (click)="another()">Test</button>
+    </div>
 </div>

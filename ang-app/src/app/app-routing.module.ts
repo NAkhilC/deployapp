@@ -15,12 +15,12 @@ const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent,
-        //canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
     },
     {
         path: 'about',
         component: AboutComponent,
-        //canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
     },
     {
         path: 'contact',
@@ -29,7 +29,7 @@ const routes: Routes = [
     {
         path: 'view/:id',
         component: ViewItemComponent,
-        //canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
     },
 ]
 

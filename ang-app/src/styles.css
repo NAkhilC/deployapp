@@ -69,6 +69,12 @@ mat-grid-tile {
     margin-left: 20px;
     margin-top: 35px;
 }
+.login {
+    padding: 15px;
+}
+.loginuser,
+.loginpassword {
+}
 @media screen and (max-width: 880px) {
     .sortdiv1,
     .vied-id1 {
