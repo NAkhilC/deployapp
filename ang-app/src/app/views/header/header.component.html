@@ -25,6 +25,7 @@
                 </li>
             </ul>
             <span class="navbar-text"> Logged in as : {{ user$ | async }}</span>
+            <a (click)="logout()">Logout</a>
         </div>
     </div>
 </nav>

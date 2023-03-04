@@ -19,6 +19,7 @@ export class ReferenceService {
     private user = new Subject()
     token!: string
     baseUrl = environment.baseUrl
+    data: any = []
 
     getService() {
         // const requestOptions = {
@@ -46,20 +47,43 @@ export class ReferenceService {
         return ''
     }
 
+    logout() {
+        this.httpClient.get(`${this.baseUrl}/logout`, {}).subscribe((val: any) => {
+            this.router.navigate(['/'])
+        })
+    }
+
     test() {
-        const requestOptions = {}
         console.log('test')
+        const requestOptions = {}
         this.httpClient.get(`${this.baseUrl}/test`, {}).subscribe((val: any) => {
-            console.log('test')
+            console.log(val)
             if (val.user) {
                 this.store.dispatch(
                     UpdateAppUser({
                         appUser: { status: val.status, userName: val.user },
                     })
                 )
+                val.data?.documents.forEach((home: any) => {
+                    this.data.push(home.value)
+                })
                 this.router.navigate(['home'])
             }
         })
+    }
+
+    getData() {
+        return this.data
+    }
+
+    signup(values: any): any {
+        return this.httpClient.post(
+            `${this.baseUrl}/signup`,
+            { email: values.userid, password: values.password },
+            {
+                withCredentials: true, // <=========== important!
+            }
+        )
     }
 
     loginService(values: any) {
@@ -80,6 +104,9 @@ export class ReferenceService {
                     )
                     this.token = val.token
                     this.router.navigate(['home'])
+                    val.data?.documents.forEach((home: any) => {
+                        this.data.push(home.value)
+                    })
                     return val
                 }
             })

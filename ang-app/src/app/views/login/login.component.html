@@ -2,7 +2,7 @@
     <div class="picture"></div>
 
     <div class="form-group loginuser">
-        <label for="exampleInputEmail1">Email address</label>
+        <label for="exampleInputEmail1">User Id</label>
         <input
             type="email"
             class="form-control"
@@ -23,8 +23,11 @@
             formControlName="password"
         />
     </div>
-    <div>
-        <button type="submit" class="btn btn-primary submitbutton" (click)="submit()">Submit</button>
-        <button type="submit" class="btn btn-primary submitbutton" (click)="another()">Test</button>
+    <div class="alert alert-success w-25" *ngIf="status" role="alert">User Has been created</div>
+    <div class="alert alert-danger w-25 mt-2" *ngIf="userExist" role="alert">User already exists</div>
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary submitbutton" (click)="submit()">Login</button> |
+        <button type="submit" class="btn btn-primary submitbutton" (click)="signup()">SignUp</button>
+        <button type="submit" class="btn btn-primary submitbutton" (click)="test()">SignUp</button>
     </div>
 </div>

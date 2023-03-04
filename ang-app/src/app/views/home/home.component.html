@@ -12,9 +12,9 @@
                     style="object-fit: cover; object-position: top; display: block; height: 100%; width: 100%"
                 />
             </div>
-            <div class="p-3">
-                <h3>${{ house.price }}</h3>
-                <h6>{{ house.address }}</h6>
+            <div class="p-3" style="overflow: hidden; width: 50%">
+                <h5>${{ house.price }}</h5>
+                <p>{{ house.address }}</p>
                 <a routerLink="/view/{{ house.id }}">View</a>
                 <div class="d-flex flex-row">
                     <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon
@@ -29,13 +29,13 @@
                     ><span class="ms-2">{{ house.bath }}</span>
                 </div>
             </div>
-            <mat-icon
+            <!-- <mat-icon
                 aria-hidden="false"
                 style="width: 40px; height: 40px"
                 class="p-2"
                 aria-label="Example home icon"
                 fontIcon="add_circle"
-            ></mat-icon>
+            ></mat-icon> -->
         </div>
     </div>
 </div>

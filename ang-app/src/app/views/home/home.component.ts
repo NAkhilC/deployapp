@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { ReferenceService } from 'src/app/services/http/reference.service'
 import { data } from 'src/app/static/data'
 
 @Component({
@@ -7,7 +8,9 @@ import { data } from 'src/app/static/data'
     styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-    constructor() {}
-    data: any = data
-    ngOnInit(): void {}
+    constructor(private ref: ReferenceService) {}
+    data: any = []
+    ngOnInit(): void {
+        this.data = this.ref.getData()
+    }
 }

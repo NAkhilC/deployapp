@@ -11,6 +11,8 @@ import { ReferenceService } from 'src/app/services/http/reference.service'
 })
 export class LoginComponent implements OnInit {
     loginForm!: FormGroup
+    status: boolean = false
+    userExist: boolean = false
     constructor(private router: Router, private formBuilder: FormBuilderService, private ref: ReferenceService) {
         ref.getService()
 
@@ -23,7 +25,16 @@ export class LoginComponent implements OnInit {
     submit() {
         this.ref.loginService(this.loginForm.value)
     }
-    another() {
+    test() {
         this.ref.test()
+    }
+    signup() {
+        this.ref.signup(this.loginForm.value).subscribe((val: any) => {
+            if (val.status === 200) {
+                this.status = true
+            } else {
+                this.userExist = true
+            }
+        })
     }
 }

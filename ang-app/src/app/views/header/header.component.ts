@@ -15,11 +15,15 @@ export class HeaderComponent implements OnInit {
     public user: any = new BehaviorSubject('Not logged in')
     user$ = this.user.asObservable()
 
-    constructor(private store: Store) {}
+    constructor(private store: Store, private ref: ReferenceService) {}
 
     ngOnInit(): void {
         this.store.select(getAppUser).subscribe((user) => {
             this.user.next(user.getAppUser?.appUser?.userName)
         })
+    }
+    logout() {
+        console.log('******88')
+        this.ref.logout()
     }
 }
